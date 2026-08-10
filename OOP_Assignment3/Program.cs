@@ -454,6 +454,29 @@
             center.Driver = driver;
             Console.WriteLine($"\nDriver Assigned: {center.Driver.FullName}");
 
+            // d) Create one StandardShipment
+            Console.WriteLine("\nEnter Standard Shipment Data:");
+            Console.Write("Tracking Code: ");
+            string standardTrackingCode = Console.ReadLine();
+            Console.Write("Description: ");
+            string standardDescription = Console.ReadLine();
+            Console.Write("Weight: ");
+            decimal standardWeight = decimal.Parse(Console.ReadLine());
+            Console.Write("Delivery Fee: ");
+            decimal standardDeliveryFee = decimal.Parse(Console.ReadLine());
+            Console.Write("City: ");
+            string standardCity = Console.ReadLine();
+            Console.Write("Street: ");
+            string standardStreet = Console.ReadLine();
+            Console.Write("Building Number: ");
+            int standardBuildingNumber = int.Parse(Console.ReadLine());
+
+            DeliveryAddress standardAddress = new DeliveryAddress(standardCity, standardStreet, standardBuildingNumber);
+
+            StandardShipment standard = new StandardShipment(
+                standardTrackingCode, standardDescription, standardWeight, standardDeliveryFee, standardAddress);
+
+
 
         }
     }
