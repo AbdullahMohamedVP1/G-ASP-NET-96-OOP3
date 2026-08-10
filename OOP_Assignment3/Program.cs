@@ -511,6 +511,16 @@
             Console.WriteLine();
             center.PrintAllShipments();
 
+            // i) Call DeliveryHelper.PrintShipmentDetails() for each shipment
+            Console.WriteLine("\nPrinting Using DeliveryHelper...\n");
+            DeliveryHelper.PrintShipmentDetails(standard);
+            Console.WriteLine("Standard Shipment Printed Successfully.\n");
+            DeliveryHelper.PrintShipmentDetails(express);
+            Console.WriteLine("Express Shipment Printed Successfully.\n");
+            DeliveryHelper.PrintShipmentDetails(international);
+            Console.WriteLine("International Shipment Printed Successfully.");
+            Console.WriteLine(new string('=', 40));
+
 
 
         }
