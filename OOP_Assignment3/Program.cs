@@ -469,7 +469,20 @@
             StandardShipment standard = new StandardShipment(
                 standardTrackingCode, standardDescription, standardWeight, standardDeliveryFee, fixedAddress);
 
-
+            // e) Create one ExpressShipment
+            Console.WriteLine("\nEnter Express Shipment Data:");
+            Console.Write("Tracking Code: ");
+            string expressTrackingCode = Console.ReadLine();
+            Console.Write("Description: ");
+            string expressDescription = Console.ReadLine();
+            Console.Write("Weight: ");
+            decimal expressWeight = decimal.Parse(Console.ReadLine());
+            Console.Write("Delivery Fee: ");
+            decimal expressDeliveryFee = decimal.Parse(Console.ReadLine());
+            Console.Write("Extra Fee: ");
+            decimal extraFee = decimal.Parse(Console.ReadLine());
+            ExpressShipment express = new ExpressShipment(
+                expressTrackingCode, expressDescription, expressWeight, expressDeliveryFee, fixedAddress, extraFee);
 
         }
     }
