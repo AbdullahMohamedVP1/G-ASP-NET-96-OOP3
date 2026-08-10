@@ -235,8 +235,10 @@
             DestinationCountry = destinationCountry;
             CustomsFee = customsFee;
         }
-
-        // override cost بالفورمولا: DeliveryFee + (Weight * 5) + CustomsFee
+        public virtual string GenerateCustomsReport()
+        {
+            return $"Customs Report - Country: {DestinationCountry}, Fee: {CustomsFee} EGP";
+        }
         public override decimal EstimatedCost
         {
             get { return DeliveryFee + (Weight * 5) + CustomsFee; }
@@ -253,6 +255,27 @@
             Console.WriteLine($"Destination Country : {DestinationCountry}");
             Console.WriteLine($"Customs Fee         : {CustomsFee} EGP");
             Console.WriteLine($"Estimated Cost      : {EstimatedCost} EGP");
+        }
+    }
+
+    public class PriorityInternationalShipment : InternationalShipment
+    {
+        public PriorityInternationalShipment(
+            string trackingCode,
+            string description,
+            decimal weight,
+            decimal deliveryFee,
+            DeliveryAddress destination,
+            string destinationCountry,
+            decimal customsFee)
+            : base(trackingCode, description, weight, deliveryFee, destination, destinationCountry, customsFee)
+        {
+        }
+
+        // sealed override محدش يقدر يعمل override تاني على الميثود دي في أي كلاس هيرث منها
+        public sealed override string GenerateCustomsReport()
+        {
+            return $"[PRIORITY] {base.GenerateCustomsReport()}";
         }
     }
 
