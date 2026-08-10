@@ -546,7 +546,28 @@
             }
             Console.WriteLine(new string('=', 40));
 
-            
+            // l) Demonstrate the sealed class and sealed method
+            Console.WriteLine("\nSealed Class Demo:");
+            Console.WriteLine("\nEnter Completed Shipment Data:");
+            Console.Write("Tracking Code: ");
+            string completedTrackingCode = Console.ReadLine();
+            Console.Write("Description: ");
+            string completedDescription = Console.ReadLine();
+            Console.Write("Weight: ");
+            decimal completedWeight = decimal.Parse(Console.ReadLine());
+            Console.Write("Delivery Fee: ");
+            decimal completedDeliveryFee = decimal.Parse(Console.ReadLine());
+
+            CompletedShipment completed = new CompletedShipment(
+                completedTrackingCode, completedDescription, completedWeight, completedDeliveryFee, fixedAddress);
+            completed.PrintShipment();
+
+            Console.WriteLine("\nSealed Method Demo:");
+            PriorityInternationalShipment priority = new PriorityInternationalShipment(
+                intlTrackingCode + "-P", "Urgent " + intlDescription, intlWeight, intlDeliveryFee,
+                fixedAddress, destinationCountry, customsFee);
+            Console.WriteLine(priority.GenerateCustomsReport());
+
         }
     }
 }
