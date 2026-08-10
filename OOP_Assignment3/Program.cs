@@ -453,33 +453,19 @@
             // c) Assign the Driver to the DeliveryCenter
             center.Driver = driver;
             Console.WriteLine($"\nDriver Assigned: {center.Driver.FullName}");
-
-            // ثابت لكل الشحنات - بدل ما تسأل عن City/Street/BuildingNumber كل مرة
-            DeliveryAddress fixedAddress = new DeliveryAddress("Cairo", "Main St", 1);
+            
+            DeliveryAddress fixedAddress = new DeliveryAddress("Cairo", "Main St", 1); //علشان ميسألش عنهم كل مره 
 
             // d) Create one StandardShipment
             Console.WriteLine("\nEnter Standard Shipment Data:");
-
             Console.Write("Tracking Code: ");
             string standardTrackingCode = Console.ReadLine();
-
             Console.Write("Description: ");
             string standardDescription = Console.ReadLine();
-
             Console.Write("Weight: ");
             decimal standardWeight = decimal.Parse(Console.ReadLine());
-
             Console.Write("Delivery Fee: ");
             decimal standardDeliveryFee = decimal.Parse(Console.ReadLine());
-            Console.Write("City: ");
-            string standardCity = Console.ReadLine();
-            Console.Write("Street: ");
-            string standardStreet = Console.ReadLine();
-            Console.Write("Building Number: ");
-            int standardBuildingNumber = int.Parse(Console.ReadLine());
-
-            DeliveryAddress standardAddress = new DeliveryAddress(standardCity, standardStreet, standardBuildingNumber);
-
             StandardShipment standard = new StandardShipment(
                 standardTrackingCode, standardDescription, standardWeight, standardDeliveryFee, fixedAddress);
 
