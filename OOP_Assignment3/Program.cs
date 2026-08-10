@@ -521,7 +521,15 @@
             Console.WriteLine("International Shipment Printed Successfully.");
             Console.WriteLine(new string('=', 40));
 
+            // k) Build a Shipment[] holding mixed types and print all of them in a loop
+            Console.WriteLine("\nPrinting Using Shipment[]...\n");
+            Shipment[] mixedShipments = { standard, express, international };
 
+            foreach (Shipment s in mixedShipments)
+            {
+                Console.WriteLine($"{s.ShipmentType}...");
+            }
+            Console.WriteLine(new string('=', 40));
 
         }
     }
