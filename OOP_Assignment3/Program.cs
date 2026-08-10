@@ -443,6 +443,13 @@
             Console.Write("Phone Number: ");
             string driverPhone = Console.ReadLine();
             Driver driver = new Driver(driverId, driverName, driverPhone);
+
+            // b) Create a DeliveryCenter
+            Console.Write("\nEnter Delivery Center Name: ");
+            string centerName = Console.ReadLine();
+            DeliveryCenter center = new DeliveryCenter();
+            center.CenterName = centerName;
+
         }
     }
 }
