@@ -501,6 +501,18 @@
             decimal customsFee = decimal.Parse(Console.ReadLine());
             InternationalShipment international = new InternationalShipment(
                 intlTrackingCode, intlDescription, intlWeight, intlDeliveryFee, fixedAddress, destinationCountry, customsFee);
+
+            // g) Add all shipments to the DeliveryCenter
+            center.AddShipment(standard);
+            center.AddShipment(express);
+            center.AddShipment(international);
+
+            // h) Print all shipments using PrintAllShipments()
+            Console.WriteLine();
+            center.PrintAllShipments();
+
+
+
         }
     }
 }
