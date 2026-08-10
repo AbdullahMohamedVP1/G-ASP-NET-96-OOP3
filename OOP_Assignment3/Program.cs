@@ -412,12 +412,10 @@
         {
             #region Question1
             //a)  What is the difference between Method Overloading and Method Overriding?
-
             //sol :   overloading it means having one orm ore methods with same name but in differnent parameters or different data type
             // overriding it means having one method that already exist in in the parent class inside the child class and it happens when there's inheritance
 
             //b)  What is the difference between Static Binding and Dynamic Binding?
-
             //sol : Binding>> 1  static : the method that will be called is decided at compile time
             // Binding>> 2  dynamic : the method that will be called is decided at run time and it happens with overriding
             #endregion
@@ -436,6 +434,15 @@
             // again in any child class so it stays the same everywhere
             #endregion
 
+            // a) Create a Driver
+            Console.WriteLine("Enter Driver Data:");
+            Console.Write("Driver ID: ");
+            string driverId = Console.ReadLine();
+            Console.Write("Full Name: ");
+            string driverName = Console.ReadLine();
+            Console.Write("Phone Number: ");
+            string driverPhone = Console.ReadLine();
+            Driver driver = new Driver(driverId, driverName, driverPhone);
         }
     }
 }
