@@ -255,6 +255,100 @@
             Console.WriteLine($"Estimated Cost      : {EstimatedCost} EGP");
         }
     }
+
+    public class Driver
+    {
+        public string DriverId { get; set; }
+        public string FullName { get; set; }
+        public string PhoneNumber { get; set; }
+
+        public Driver(string driverId, string fullName, string phoneNumber)
+        {
+            DriverId = driverId;
+            FullName = fullName;
+            PhoneNumber = phoneNumber;
+        }
+    }
+
+    internal class DeliveryCenter
+    {
+        public string CenterName { get; set; }
+        public Driver Driver { get; set; }
+        private Shipment[] shipments;
+        public DeliveryCenter()
+        {
+            shipments = new Shipment[20];}
+
+        public Shipment this[int index]
+        {
+            get
+            {if (index >= 0 && index < shipments.Length)
+                    return shipments[index];
+                return default;}
+            set
+            {
+                if (index >= 0 && index < shipments.Length)
+                    shipments[index] = value;}
+        }
+        public Shipment this[string trackingCode]
+        {
+            get
+            {
+                for (int i = 0; i < shipments.Length; i++)
+                {
+                    if (shipments[i] != null && shipments[i].TrackingCode == trackingCode)
+                        return shipments[i];
+                }
+                return default;
+            }
+        }
+
+        public bool AddShipment(Shipment shipment)
+        {
+            for (int i = 0; i < shipments.Length; i++)
+            {
+                if (shipments[i] == null)
+                {
+                    shipments[i] = shipment;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool RemoveShipment(string trackingCode)
+        {
+            for (int i = 0; i < shipments.Length; i++)
+            {
+                if (shipments[i] != null && shipments[i].TrackingCode == trackingCode)
+                {
+                    shipments[i] = null;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void PrintAllShipments()
+        {
+            Console.WriteLine(new string('=', 50));
+            Console.WriteLine($"Delivery Center : {CenterName}");
+            Console.WriteLine(new string('=', 50));
+
+            for (int i = 0; i < shipments.Length; i++)
+            {
+                if (shipments[i] != null)
+                {
+                    Console.WriteLine();
+                    shipments[i].PrintShipment();
+                    Console.WriteLine();
+                    Console.WriteLine(new string('-', 50));
+                }
+            }
+        }
+    }
+
+
     internal class Program
     {
         static void Main(string[] args)
