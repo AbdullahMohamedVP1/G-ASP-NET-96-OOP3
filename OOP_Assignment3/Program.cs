@@ -126,6 +126,135 @@
             Console.WriteLine($"Estimated Cost: {EstimatedCost} EGP");
         }
     }
+
+    public class StandardShipment : Shipment
+    {
+        public override string ShipmentType => "Standard Shipment";
+
+        // Constructor Chaining - بينادي على constructor الأب
+        public StandardShipment(
+            string trackingCode,
+            string description,
+            decimal weight,
+            decimal deliveryFee,
+            DeliveryAddress destination)
+            : base(trackingCode, description, weight, deliveryFee, destination)
+        {
+        }
+        public override void PrintShipment()
+        {
+            Console.WriteLine(ShipmentType);
+            Console.WriteLine();
+            Console.WriteLine($"Tracking Code : {TrackingCode}");
+            Console.WriteLine($"Description   : {Description}");
+            Console.WriteLine($"Weight        : {Weight} KG");
+            Console.WriteLine($"Delivery Fee  : {DeliveryFee} EGP");
+            Console.WriteLine($"Estimated Cost: {EstimatedCost} EGP");
+        }
+    }
+
+    public class ExpressShipment : Shipment
+    {
+        private decimal extraFee;
+        public decimal ExtraFee
+        {
+            get { return extraFee; }
+            set
+            {
+                if (value >= 0)
+                    extraFee = value;
+            }
+        }
+
+        public override string ShipmentType => "Express Shipment";
+
+        public ExpressShipment(
+            string trackingCode,
+            string description,
+            decimal weight,
+            decimal deliveryFee,
+            DeliveryAddress destination,
+            decimal extraFee)
+            : base(trackingCode, description, weight, deliveryFee, destination)
+        {
+            ExtraFee = extraFee;
+        }
+        public override decimal EstimatedCost
+        {
+            get { return DeliveryFee + (Weight * 5) + ExtraFee; }
+        }
+
+        public override void PrintShipment()
+        {
+            Console.WriteLine(ShipmentType);
+            Console.WriteLine();
+            Console.WriteLine($"Tracking Code : {TrackingCode}");
+            Console.WriteLine($"Description   : {Description}");
+            Console.WriteLine($"Weight        : {Weight} KG");
+            Console.WriteLine($"Delivery Fee  : {DeliveryFee} EGP");
+            Console.WriteLine($"Extra Fee     : {ExtraFee} EGP");
+            Console.WriteLine($"Estimated Cost: {EstimatedCost} EGP");
+        }
+    }
+
+    public class InternationalShipment : Shipment
+    {
+        private string destinationCountry;
+        public string DestinationCountry
+        {
+            get { return destinationCountry; }
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                    destinationCountry = value;
+            }
+        }
+
+        private decimal customsFee;
+        public decimal CustomsFee
+        {
+            get { return customsFee; }
+            set
+            {
+                if (value >= 0)
+                    customsFee = value;
+            }
+        }
+
+        public override string ShipmentType => "International Shipment";
+        public InternationalShipment(
+            string trackingCode,
+            string description,
+            decimal weight,
+            decimal deliveryFee,
+            DeliveryAddress destination,
+            string destinationCountry,
+            decimal customsFee)
+            : base(trackingCode, description, weight, deliveryFee, destination)
+        {
+            DestinationCountry = destinationCountry;
+            CustomsFee = customsFee;
+        }
+
+        // override cost بالفورمولا: DeliveryFee + (Weight * 5) + CustomsFee
+        public override decimal EstimatedCost
+        {
+            get { return DeliveryFee + (Weight * 5) + CustomsFee; }
+        }
+
+        public override void PrintShipment()
+        {
+            Console.WriteLine(ShipmentType);
+            Console.WriteLine();
+            Console.WriteLine($"Tracking Code       : {TrackingCode}");
+            Console.WriteLine($"Description         : {Description}");
+            Console.WriteLine($"Weight              : {Weight} KG");
+            Console.WriteLine($"Delivery Fee        : {DeliveryFee} EGP");
+            Console.WriteLine($"Destination Country : {DestinationCountry}");
+            Console.WriteLine($"Customs Fee         : {CustomsFee} EGP");
+            Console.WriteLine($"Estimated Cost      : {EstimatedCost} EGP");
+        }
+    }
     internal class Program
     {
         static void Main(string[] args)
