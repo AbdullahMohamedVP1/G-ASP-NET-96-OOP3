@@ -521,6 +521,21 @@
             Console.WriteLine("International Shipment Printed Successfully.");
             Console.WriteLine(new string('=', 40));
 
+            // j) Demonstrate both versions of UpdateWeight()
+            Console.WriteLine("\nUpdating Weight...\n");
+            Console.WriteLine($"Original Weight : {standard.Weight} KG");
+            Console.Write("Enter new weight: ");
+            decimal newWeight = decimal.Parse(Console.ReadLine());
+            standard.UpdateWeight(newWeight);
+            Console.WriteLine($"Updated Weight : {standard.Weight} KG");
+            Console.Write("Enter new weight again: ");
+            decimal newWeight2 = decimal.Parse(Console.ReadLine());
+            Console.Write("Enter extra packing weight: ");
+            decimal extraPacking = decimal.Parse(Console.ReadLine());
+            standard.UpdateWeight(newWeight2, extraPacking);
+            Console.WriteLine($"Updated Weight After Packing : {standard.Weight} KG");
+            Console.WriteLine(new string('=', 40));
+
             // k) Build a Shipment[] holding mixed types and print all of them in a loop
             Console.WriteLine("\nPrinting Using Shipment[]...\n");
             Shipment[] mixedShipments = { standard, express, international };
@@ -531,6 +546,7 @@
             }
             Console.WriteLine(new string('=', 40));
 
+            
         }
     }
 }
