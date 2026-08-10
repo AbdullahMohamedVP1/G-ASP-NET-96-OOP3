@@ -484,6 +484,23 @@
             ExpressShipment express = new ExpressShipment(
                 expressTrackingCode, expressDescription, expressWeight, expressDeliveryFee, fixedAddress, extraFee);
 
+
+            // f) Create one InternationalShipment
+            Console.WriteLine("\nEnter International Shipment Data:");
+            Console.Write("Tracking Code: ");
+            string intlTrackingCode = Console.ReadLine();
+            Console.Write("Description: ");
+            string intlDescription = Console.ReadLine();
+            Console.Write("Weight: ");
+            decimal intlWeight = decimal.Parse(Console.ReadLine());
+            Console.Write("Delivery Fee: ");
+            decimal intlDeliveryFee = decimal.Parse(Console.ReadLine());
+            Console.Write("Destination Country: ");
+            string destinationCountry = Console.ReadLine();
+            Console.Write("Customs Fee: ");
+            decimal customsFee = decimal.Parse(Console.ReadLine());
+            InternationalShipment international = new InternationalShipment(
+                intlTrackingCode, intlDescription, intlWeight, intlDeliveryFee, fixedAddress, destinationCountry, customsFee);
         }
     }
 }
