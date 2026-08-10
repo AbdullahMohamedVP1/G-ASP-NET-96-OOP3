@@ -335,16 +335,24 @@
             Console.WriteLine($"Delivery Center : {CenterName}");
             Console.WriteLine(new string('=', 50));
 
-            for (int i = 0; i < shipments.Length; i++)
+            foreach (Shipment s in shipments)
             {
-                if (shipments[i] != null)
+                if (s != null)
                 {
                     Console.WriteLine();
-                    shipments[i].PrintShipment();
+                    s.PrintShipment();
                     Console.WriteLine();
                     Console.WriteLine(new string('-', 50));
                 }
             }
+        }
+    }
+
+    public static class DeliveryHelper
+    {
+        public static void PrintShipmentDetails(Shipment shipment)
+        {
+            shipment.PrintShipment();
         }
     }
 
